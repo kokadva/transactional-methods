@@ -5,3 +5,4 @@ from decorators.database import db
 def save(book, db):
     db.add(book)
     db.flush()
+    return book

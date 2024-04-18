@@ -6,10 +6,9 @@ from schemas.book import BookInfo
 
 @transactional
 def save_book(title):
-    book_model = BookModel(title=title)
-    save(book_model)
-    book_info = BookInfo.from_orm(book_model)
-    return book_info
+    book = save(BookModel(title=title))
+    # Return Pydantic model from service (recommended)
+    return BookInfo.from_orm(book)
 
 
 @transactional
